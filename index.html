@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Scroll buttom to top</h1>
+    <p>
+        button#scroll-to-top-button {
+        left: 50%;
+        }
+    </p>
+
+    <h1>Policy Page</h1>
+
+    <p>.shopify-policy__container {
+        max-width: 1200px !important;
+        }</p>
+
+    <h1>Contact us</h1>
+    <p>
+        div#shopify-section-template--16172542132308__contact-form h3.m-contact-form__heading {
+        text-align: center;
+        padding-bottom: 31px;
+        }
+
+
+        div#shopify-section-template--16172542132308__contact-form form#contact_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        }
+    </p>
+    <h1>Mobile Responsibe </h1>
+
+    <p>@media screen and (max-width: 768px) { }</p>
+
+    <h1>Product title short </h1>
+    <p>.card_heading{
+        -webkit-line-clamp:2;
+        -webkit-box-orient : vertical;
+        display: -webkit-box;
+        overflow:hidden;
+        }
+    </p>
+    <h1>newslater </h1>
+    <p>.m-newsletter-section__description {
+        opacity: 1.4 !important;
+        margin-top: 11px;
+        }
+        .m-newsletter-section__header {
+        margin-bottom: 30px !important;
+        }
+
+
+        button.m-add-to-cart.m-spinner-button.m-button.m-button--secondary {
+        border: 1px solid;
+        }button.m-newsletter-form__button.m-newsletter-form__button--text.m-button {
+        background-color: aqua;
+        color: black;
+        }</p>
+
+    <h1>Product page description</h1>
+
+    <p>{{product.description}}</p>
+
+    <h1>FAQ</h1>
+    <p>h3.m-collapsible--button.h5 {
+        background: #fff !important;
+        margin-bottom: 20px !important;
+        padding: 20px !important;
+        border-radius: 5px !important;
+        border-bottom: 0px !important;
+        box-shadow: 2px 2px #c49e5a;
+        }
+        .m-collapsible-section .m-collapsible--content__inner {
+        color: rgb(var(--color-foreground));
+        line-height: 1.7;
+        padding-top: 0px;
+        padding-bottom: 7px;
+        }</p>
+
+    <h1>product card</h1>
+
+    <p>.m-product-card.m-product-card--style-1.m-product-card--show-second-img.m-scroll-trigger.animate--fade-in-up {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 10px;
+        padding-bottom: 15px;
+        }
+
+
+
+
+        box-shadow: #00000029 0 1px 4px;
+    </p>
+
+    <h1>Judge.me</h1>
+
+    <p><!-- Start of Judge.me code -->
+    <div style='clear:both'></div>
+    <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'>
+        {{ product.metafields.judgeme.widget }}
+    </div>
+    <!-- End of Judge.me code --></p>
+
+    <h1>Font css</h1>
+
+    <p>
+        {% if section.settings.enable %}
+  <style data-custom-fonts>
+    {% assign items = section.blocks | reverse  %}
+
+      {% for block in items %}
+
+      {% assign name = block.settings.name %}
+      {% assign url = block.settings.custom_font_url  %}
+      {% assign custom_font_weight = block.settings.custom_font_weight %}
+      {% assign custom_font_style = block.settings.custom_font_style %}
+      {% assign apply_h1 = block.settings.apply_h1 %}
+      {% assign apply_h2 = block.settings.apply_h2 %}
+      {% assign apply_h3 = block.settings.apply_h3 %}
+      {% assign apply_h4 = block.settings.apply_h4 %}
+      {% assign apply_h5 = block.settings.apply_h5 %}
+      {% assign apply_h6 = block.settings.apply_h6 %}
+      {% assign apply_span = block.settings.apply_span %}
+      {% assign apply_p = block.settings.apply_p %}
+      {% assign apply_custom = block.settings.apply_custom %}
+
+      {% if url != blank and url != "" %}
+
+        {% capture _font_type %}
+        {% if url contains ".otf" %}
+        opentype
+        {% elsif url contains ".ttf" %}
+        truetype
+        {% elsif url contains ".svg" %}
+        svg
+        {% elsif url contains ".woff2" %}
+        woff2
+        {% else %}
+        woff
+        {% endif %}
+        {% endcapture %}
+
+        {% assign font_type = _font_type | strip %}
+          @font-face {
+            font-family: '{{ name }}';
+            src: url({{ url }}) format('{{ font_type }}');
+
+              {% if custom_font_style != 'none' %}
+            font-style: {{ custom_font_style }};
+              {% endif %}
+            {% if custom_font_weight != 'none' %}
+            font-weight: {{ custom_font_weight }};
+              {% endif %}
+          }
+
+
+          {% if apply_h1 %}
+            h1{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_h2 %}
+            h2{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_h3 %}
+            h3{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_h4 %}
+            h4{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_h5 %}
+            h5{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_h6 %}
+            h6{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_p %}
+            p{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_span %}
+            span{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+          {% if apply_custom != "" and apply_custom != blank %}
+            {{ apply_custom }}{
+              font-family: '{{name}}' !important;
+            }
+          {% endif %}
+
+
+      {% endif %}
+      {% endfor %}
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Ezfy Custom Font",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Made by https://ezfycode.com/"
+    },
+    {
+      "type": "paragraph",
+      "content": "Replace apps with copy/paste code snippets like this one & save money. https://ezfycode.com/shop"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Enable",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Font",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Made by https://ezfycode.com/"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Custom font name",
+          "info": "Use only lower or upper characters from A-Z. No numbers, no special characters, no spaces.",
+          "default": "customfont"
+        },
+        {
+          "type": "select",
+          "id": "custom_font_weight",
+          "label": "Font weight",
+          "info": "If you're unsure, use \"none\".",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            },
+            {
+              "value": "100",
+              "label": "100"
+            },
+            {
+              "value": "200",
+              "label": "200"
+            },
+            {
+              "value": "300",
+              "label": "300"
+            },
+            {
+              "value": "400",
+              "label": "400"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700"
+            },
+            {
+              "value": "800",
+              "label": "800"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "custom_font_style",
+          "label": "Font style",
+          "info": "If you're unsure, use \"none\".",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "italic",
+              "label": "Italic"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "custom_font_url",
+          "label": "Custom font URL",
+          "info": "Add all URLs for this font here, one per line. Upload your fonts to the [files panel](/admin/settings/files)."
+        },
+        {
+          "type": "paragraph",
+          "content": "Apply the custom font to the following HTML elements:"
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h1",
+          "label": "H1",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h2",
+          "label": "H2",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h3",
+          "label": "H3",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h4",
+          "label": "H4",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h5",
+          "label": "H5",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h6",
+          "label": "H6",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_span",
+          "label": "<span> tags",
+          "info": "Apply this custom font to all HTML span elements.",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_p",
+          "label": "<p> tags",
+          "info": "Apply this custom font to all HTML paragraph elements.",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "apply_custom",
+          "label": "CSS Selectors",
+          "info": "Apply font to custom CSS selectors. Example: .custom-text,.wrapper > h1",
+          "placeholder": ".my-text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+    </p>
+
+
+</body>
+
+</html>
