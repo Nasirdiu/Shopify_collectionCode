@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 768px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="column">
+    <img src="https://cdn.shopify.com/s/files/1/0673/3578/2677/files/Light-Placeholder-2-8.png?v=1739159848" alt="Snow" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="https://cdn.shopify.com/s/files/1/0673/3578/2677/files/Light-Placeholder-1-8.png?v=1739159847" alt="Forest" style="width:100%">
+  </div>
+</div>
+
+</body>
+</html>

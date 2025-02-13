@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jambo Lighting</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        /* General Styles */
+        .new-section {
+    color: #000000;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Container */
+.containers {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Card Style */
+.card {
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    text-align: left;
+    padding: 15px;
+    background: #ffffff;
+  
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100px;
+    height: 112px;
+}
+
+.card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.card img {
+    width: 100px;
+    height: 112px;
+    margin: 0px auto;
+}
+}
+
+    </style>
+</head>
+<body>
+    <div class="new-section"> 
+        <div class="containers">
+        <h2 class="title">Why Choose Jambo Lighting?</h2>
+        <p class="subtitle">Where Timeless Design Meets Modern Innovation.</p>
+
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0673/3578/2677/files/Screenshot_2.png?v=1739161512"  alt="Superior Craftsmanship">
+                <div>
+                    <h3>Superior Craftsmanship</h3>
+                    <p>Bigger, brighter, better.</p>
+                    <p> Our lamps are larger and more striking, crafted with exceptional attention to detail.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0673/3578/2677/files/Screenshot_3.png?v=1739161838"  alt="Customer Care">
+                <div>
+                    <h3>Unparalleled Customer Care</h3>
+                    <p>We've got your back.</p>
+                    <p>We stand by every lamp we design. If there's ever an issue, our dedicated team ensures quick and efficient resolution.</p>
+
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0673/3578/2677/files/Screenshot_4.png?v=1739161838" alt="Unrivaled Variety">
+                <div>
+                    <h3>Unrivaled Variety</h3>
+                    <p>A style for everyone.</p>
+                    <p>From classic to modern, we offer a wide selection of colors, features, and styles—including Bluetooth speakers & LED options.</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+                <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0673/3578/2677/files/Screenshot_5.png?v=1739161838" alt="Innovative Designs">
+                <div>
+                    <h3>Innovative Designs</h3>
+                    <p>Classic reimagined.</p>
+                    <p>Our lamps blend aesthetics with practicality, elevating the ambiance and style of any space.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+   
+</body>
+</html>
