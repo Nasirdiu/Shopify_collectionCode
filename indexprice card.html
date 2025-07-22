@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing Plans</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+
+    .pricing-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #dce0e6;
+      border-radius: 12px;
+      width: 300px;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .card.popular {
+      border: 2px solid #3ecf8e;
+    }
+
+    .badge {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #3ecf8e;
+      color: white;
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .card h3 {
+      margin: 1rem 0 0.3rem;
+      font-size: 1.3rem;
+    }
+
+    .card p.subtitle {
+      color: #777;
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card .qty {
+      color: #2ecc71;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2d7df6;
+      margin-bottom: 1rem;
+    }
+
+    .price del {
+      color: #888;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+
+    .btn {
+      background: #2d7df6;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #1c5fd9;
+    }
+
+    .features {
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .features li {
+      margin: 0.5rem 0;
+      list-style: none;
+    }
+
+    .features li::before {
+      content: '⭐';
+      margin-right: 8px;
+      color: #3ecf8e;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pricing-section">
+
+    <!-- To-Go Pack -->
+    <div class="card">
+      <h3>To-Go pack</h3>
+      <p class="subtitle">Altijd voorbereid, waar je ook bent</p>
+      <p class="qty">10 x 10 stuks (individueel verpakt)</p>
+      <p class="price">€18,95</p>
+      <button class="btn">Bestel Nu</button>
+      <ul class="features">
+        <li>Perfect voor reizen & festivals</li>
+        <li>Compact & discreet verpakt</li>
+        <li>Altijd hygiënisch beschermd</li>
+      </ul>
+    </div>
+
+    <!-- Maxi Pack -->
+    <div class="card popular">
+      <div class="badge">Meest Populair</div>
+      <h3>Maxi Pack</h3>
+      <p class="subtitle">Beste waarde voor gezinnen</p>
+      <p class="qty">100 stuks</p>
+      <p class="price"><del>€39,99</del> €12,95</p>
+      <button class="btn">Bestel Nu</button>
+      <ul class="features">
+        <li>Maandlange voorraad</li>
+        <li>Gratis thuisbezorgd</li>
+        <li>25% korting & beste prijs</li>
+        <li>Milieuvriendelijk papier</li>
+      </ul>
+    </div>
+
+    <!-- Bulk Pack -->
+    <div class="card">
+      <h3>Bulk Pack</h3>
+      <p class="subtitle">Voor kantoren en bedrijven</p>
+      <p class="qty">500 stuks</p>
+      <p class="price">€59,95</p>
+      <button class="btn">Bestel Nu</button>
+      <ul class="features">
+        <li>Ideaal voor kantoren & horeca</li>
+        <li>Snelle levering binnen 24u</li>
+        <li>Factuurmogelijkheid beschikbaar</li>
+        <li>Extra voordelige prijs per stuk</li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>
