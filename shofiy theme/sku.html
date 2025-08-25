@@ -1,0 +1,5 @@
+{% if product.selected_or_first_available_variant.sku != blank %}
+  <p class="product-sku">
+    <strong>SKU:</strong> {{ product.selected_or_first_available_variant.sku }}
+  </p>
+{% endif %}
