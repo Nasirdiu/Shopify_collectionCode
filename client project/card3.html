@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex
+;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+    flex-direction: column-reverse;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 92%;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+.card p {
+  font-size: 16px;
+  color: #666;
+}
+
+.card .icon {
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card.science {
+  border-left: 5px solid #4fa3c3;
+}
+
+.card.results {
+  border-left: 5px solid #2e9e6d;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+
+    </style>
+</head>
+<body>
+    
+    
+    <div class="container">
+        
+        <div class="card results">
+          <div class="icon">
+            <img src="path_to_icon_2.svg" alt="icon">
+          </div>
+          <h3>Proven Results</h3>
+          <p>Over 10 years of painless injections. Patients often said "I thought you didn't give me an injection" - when they had just received one completely painlessly.</p>
+        </div>
+      </div>
+
+      
+
+</body>
+</html>
