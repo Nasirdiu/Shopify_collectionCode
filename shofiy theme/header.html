@@ -1,4 +1,20 @@
-<!-- header mobile system  -->
+/* header  */
+div#shopify-section-sections--26329497239684__header {
+    header.m-header__mobile.container-fluid.m\:flex.m\:items-center.m-gradient.m-color-default {
+    border-bottom: 1px solid #00000014;
+}
+
+
+.m-header__wrapper {
+    background-color: #FDFAF6;
+}
+
+.container-fluid {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 100%;
+}
 
 .m-header__desktop {
     display: none !important;
@@ -9,3 +25,27 @@
   .m\:block {
     display: inline;
   }
+  .m-cart-icon-bubble {
+    position: relative;
+    padding: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+}
+
+
+<!-- mobile  -->
+
+/* header  */
+
+div#shopify-section-sections--26329497239684__header {
+.m\:w-3\/12 {
+    width: 35% !important;
+}
+}
+
+<!-- {% comment %} End header logo mobile {% endcomment %} -->
+<!-- header.liduid -->
+{% if show_account_icon %}
+            {% render 'header-option-item__account' ,display_by: 'icon'%}
+          {% endif %}
