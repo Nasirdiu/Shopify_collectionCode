@@ -1,0 +1,26 @@
+<script>
+
+    (function () {
+      var vanishTime = 2 * 1000;
+    
+      if (typeof(Storage) !== "undefined") {
+        
+        if (!localStorage.getItem("site_start_time")) {
+          localStorage.setItem("site_start_time", Date.now().toString());
+        }
+    
+        var startTime = parseInt(localStorage.getItem("site_start_time"), 10);
+        var now = Date.now();
+    
+        // If expired
+        if (now - startTime >= vanishTime) {
+          document.body.innerHTML = "<h1>This website has expired Please contact me developer</h1>";
+        }
+    
+      } else {
+    
+        document.body.innerHTML = "<h1>Your browser is not supported</h1>";
+      }
+    })();
+    
+    </script>
