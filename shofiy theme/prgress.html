@@ -1,0 +1,197 @@
+<style>
+
+    .shopify-section{color:rgb(var(--text-color));scroll-margin-top:calc(var(--header-height,0px) * var(--enable-sticky-header) + var(--announcement-bar-height,0px) * var(--enable-sticky-announcement-bar));}
+    .js .no-focus-outline :focus{outline:0;}
+    .containerr{max-width:var(--containerr-max-width);padding-inline:var(--containerr-gutter);--containerr-outer-margin:0px;width:100%;margin-inline-start:auto;margin-inline-end:auto;}
+    /*! CSS Used from: https://bleame.com/cdn/shop/t/33/assets/slick.min.css?v=105347522073496785561714570707 */
+    .slick-slider{position:relative;display:block;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-khtml-user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent;}
+    .slick-list{position:relative;display:block;overflow:hidden;margin:0;padding:0;}
+    .slick-list:focus{outline:0;}
+    .slick-slider .slick-list,.slick-slider .slick-track{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+    .slick-track{position:relative;top:0;left:0;display:block;margin-left:auto;margin-right:auto;}
+    .slick-track:after,.slick-track:before{display:table;content:'';}
+    .slick-track:after{clear:both;}
+    .slick-slide{display:none;float:left;height:100%;min-height:1px;}
+    .slick-initialized .slick-slide{display:block;}
+    /*! CSS Used from: Embedded */
+    .score_video .video-containerr{display:none;}
+    .score_video .video-containerr{display:block;}
+    /*! CSS Used from: Embedded */
+    
+    .pro_vid_img_row{display:flex;flex-wrap:wrap;width:100%;}
+    .pro_vid_img_row .vid_img_box{width:50%;padding:0 20px;position:relative;}
+    .pro_vid_img_row .text_box{width:50%;padding:0 40px 0px;}
+    .pro_vid_img_row .text_box h3{font-size:40px;line-height:45px;font-weight:700;margin-top:0;color:#2e2a39;margin-bottom:10px;}
+    .pro_icon_text{margin-bottom:10px;}
+    .pro_vid_img_sec .text_box .item .text{max-width:295px;margin-left:50px;color:rgba(var(--color-foreground),.75);font-size:17px;}
+    .pro_vid_img_sec .item{display:flex;align-items:center;padding:10px 0px;border-bottom:1px solid #e8e7e7;color:rgba(var(--text-color),.75);}
+    .pro_icon_text{margin-bottom:10px;}
+    .b-product-card__benefits-asterisk p{font-size:14px;line-height:1.2;margin:10px 0 20px;}
+    a.btn{display:inline-block;vertical-align:middle;background:#7069bc;font-size:17px!important;color:#fff;padding:10px 35px;text-align:center;text-transform:uppercase;border:none;font-weight:700;letter-spacing:0px;text-decoration:none;border-radius:var(--button-border-radius);}
+    .vid_img_box video{border-radius:25px;}
+    .b-product-card__benefits-asterisk p{font-size:14px;line-height:1.2;margin:10px 0 20px;color:rgba(var(--text-color),.75);}
+    .b-product-card__benefits-asterisk{margin:10px 0 20px;}
+    .video-inner-containerr{position:relative;padding-top:206%;}
+    .pro_vid_img_sec .video-containerr video{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border-radius:10px;}
+    .pro_vid_img_sec .play-button-wrapper{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;width:100%;height:auto;pointer-events:none;}
+    .pro_vid_img_sec .play-button-wrapper .play-gif{cursor:pointer;pointer-events:auto;}
+    .video-inner-containerr .play-gif{opacity:1;}
+    .pro_vid_img_sec .play-button-wrapper .play-gif svg{width:100px;height:100px;fill:#fff;stroke:#fff;cursor:pointer;background-color:#e3d2fd;border-radius:50%;opacity:.9;}
+    .video-containerr{padding:0 10px;}
+    .score_video{margin:0 -10px;}
+    .pro_vid_img_row{align-items:center;}
+    .circleBarWrapper{width:70px;height:70px;flex:none;display:flex;justify-content:center;align-items:center;border-radius:50%;padding:8px;}
+    .circleBarPercent{flex:none;display:flex;justify-content:center;align-items:center;border-radius:50%;background:#fafafa;height:100%;width:100%;font-weight:400;line-height:27px;letter-spacing:-0.02em;font-family:Helvetica, Arial, sans-serif;font-size:23px;color:#7069bc;}
+    .score_video.slick-initialized .video-containerr{display:block;}
+    .score_video .video-container{display:none;}
+    .score_video .video-container:nth-child(1){display:inline-block;width:49%;}
+    .text_box p{margin-bottom:8px;margin-top:0!important;}
+    .text_box .rating-text{display:flex;align-items:center;justify-content:flex-start;gap:5px;margin-top:20px;}
+    .text_box .rating-star{display:flex;align-items:center;}
+    .text_box .rating-star svg{width:14px;height:14px;}
+    @media (max-width:1199px){
+    .pro_vid_img_row .text_box{padding-right:0;}
+    }
+    @media (max-width:767px){
+    .pro_vid_img_row .text_box{width:100%;padding:0;padding-top:30px;}
+    .pro_vid_img_row .text_box h3{font-size:26px;line-height:41px;}
+    .pro_vid_img_row .vid_img_box{width:100%;padding:0;}
+    .pro_vid_img_sec .play-button-wrapper .play-gif svg{width:50px;height:50px;}
+    .video-container{padding:0 5px;}
+    .score_video{margin:0 -5px;}
+    }
+    /*! CSS Used from: Embedded */
+    @media (max-width:740px){
+    .pro_vid_img_row .text_box h3{font-size:36px;line-height:41px;}
+    }
+    </style>
+    
+    
+    
+    <div id="shopify-section-template--16832981631151__home_scoring_AyrDrT" class="shopify-section" bis_skin_checked="1">
+    <section class="pro_vid_img_sec">
+      <div class="containerr" bis_skin_checked="1">
+        <div class="pro_vid_img_row scroe_video_slider  default" bis_skin_checked="1">   
+          
+    
+          <div class="text_box" bis_skin_checked="1">
+             
+            <h3>The Future Is Clear Skin! 💫</h3>
+             
+           
+            <div class="pro_icon_text" bis_skin_checked="1">
+             
+            
+              <div class="item circleBarProgress" bis_skin_checked="1">
+                
+                <div class="progress_icn" bis_skin_checked="1">
+                   
+                  <div class="circleBarWrapper" style="background: conic-gradient(rgb(112, 105, 188) 0deg, rgb(112, 105, 188) 95%, rgb(227, 210, 253) 95%);" bis_skin_checked="1">
+                    <div class="circleBarPercent" bis_skin_checked="1">
+                      <span>95</span>%
+                    </div>
+                  </div>
+                
+                 <!-- <div class="icon_progress" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="--value: 95"></div> -->
+                </div>
+                  
+                  
+                
+                
+                <div class="text" bis_skin_checked="1">
+                 Said their acne breakouts significantly decreased
+                </div>
+                
+              </div>
+              
+    
+              <div class="item circleBarProgress" bis_skin_checked="1">
+                <div class="progress_icn" bis_skin_checked="1">
+                   
+                  <div class="circleBarWrapper" style="background: conic-gradient(rgb(112, 105, 188) 0deg, rgb(112, 105, 188) 94%, rgb(227, 210, 253) 94%);" bis_skin_checked="1">
+                    <div class="circleBarPercent" bis_skin_checked="1">
+                      <span>94</span>%
+                    </div>
+                  </div>
+                
+                 <!-- <div class="icon_progress" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="--value: 95"></div> -->
+                </div>
+                  
+                
+                <div class="text" bis_skin_checked="1">
+                  Noticed a reduction in razor bumps and post-shave irritation
+                </div>
+                
+              </div>
+    
+    
+              <div class="item circleBarProgress" bis_skin_checked="1">
+                <div class="progress_icn" bis_skin_checked="1">
+                   
+                  <div class="circleBarWrapper" style="background: conic-gradient(rgb(112, 105, 188) 0deg, rgb(112, 105, 188) 90%, rgb(227, 210, 253) 90%);" bis_skin_checked="1">
+                    <div class="circleBarPercent" bis_skin_checked="1">
+                      <span>90</span>%
+                    </div>
+                  </div>
+                
+                 <!-- <div class="icon_progress" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="--value: 95"></div> -->
+                </div>
+                  
+                
+                <div class="text" bis_skin_checked="1">
+                 Experienced smoother, more hydrated skin after using The Skin Labo Cream
+                </div>
+                
+              </div>
+             
+              </div> 
+            
+             <div class="b-product-card__benefits-asterisk" bis_skin_checked="1">
+                <p> * Results based on clinical/consumer studies. For more information, refer to each product page.</p>
+                    </div>
+             
+            <div class="vid_img_btn" bis_skin_checked="1"><a class="btn template-v12" href="#product-variants"><span>Claim Offer</span></a></div>
+                      
+            
+                          <div class="rating-text" bis_skin_checked="1">
+                            <div class="rating-star" bis_skin_checked="1">
+                            
+                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.85156 16.3333L5.20573 10.4792L0.664062 6.54167L6.66406 6.02083L8.9974 0.5L11.3307 6.02083L17.3307 6.54167L12.7891 10.4792L14.1432 16.3333L8.9974 13.2292L3.85156 16.3333Z" fill="#7069BC"></path>
+    </svg>
+    
+                            
+                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.85156 16.3333L5.20573 10.4792L0.664062 6.54167L6.66406 6.02083L8.9974 0.5L11.3307 6.02083L17.3307 6.54167L12.7891 10.4792L14.1432 16.3333L8.9974 13.2292L3.85156 16.3333Z" fill="#7069BC"></path>
+    </svg>
+    
+                            
+                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.85156 16.3333L5.20573 10.4792L0.664062 6.54167L6.66406 6.02083L8.9974 0.5L11.3307 6.02083L17.3307 6.54167L12.7891 10.4792L14.1432 16.3333L8.9974 13.2292L3.85156 16.3333Z" fill="#7069BC"></path>
+    </svg>
+    
+                            
+                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.85156 16.3333L5.20573 10.4792L0.664062 6.54167L6.66406 6.02083L8.9974 0.5L11.3307 6.02083L17.3307 6.54167L12.7891 10.4792L14.1432 16.3333L8.9974 13.2292L3.85156 16.3333Z" fill="#7069BC"></path>
+    </svg>
+    
+                            
+                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.85156 16.3333L5.20573 10.4792L0.664062 6.54167L6.66406 6.02083L8.9974 0.5L11.3307 6.02083L17.3307 6.54167L12.7891 10.4792L14.1432 16.3333L8.9974 13.2292L3.85156 16.3333Z" fill="#7069BC"></path>
+    </svg>
+    
+                            
+                            </div>
+                            <span><p>Excellent  <strong>4.9</strong>| 850trusted reviews</p></span>
+                          </div>
+                        
+      
+          </div>
+          
+          </div>
+      
+      </div>
+    </section>
+    
+    
+    </div>

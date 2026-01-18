@@ -1,0 +1,159 @@
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+<style>
+  .slide-container {
+    max-width: 1120px;
+    width: 100%;
+    padding: 40px 0;
+  }
+  .slide-content {
+    margin: 0 40px;
+    overflow: hidden;
+    border-radius: 25px;
+  }
+  .card {
+    border-radius: 25px;
+    background-color: #FFF;
+  }
+  .image-content,
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+  }
+  .image-content {
+    position: relative;
+    row-gap: 5px;
+    padding: 25px 0;
+  }
+  .card-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-navBtn {
+    color: #6E93f7;
+    transition: color 0.3s ease;
+  }
+  .swiper-navBtn:hover {
+    color: #4070F4;
+  }
+  .swiper-navBtn::before,
+  .swiper-navBtn::after {
+    font-size: 35px;
+  }
+  .swiper-button-next {
+    right: 0;
+  }
+  .swiper-button-prev {
+    left: 0;
+  }
+  .swiper-pagination-bullet {
+    background-color: #6E93f7;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #4070F4;
+  }
+
+  .card-video {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 768px) {
+    .slide-content {
+      margin: 0 10px;
+    }
+    .swiper-navBtn {
+      display: none;
+    }
+  }
+</style>
+
+<div class="slide-container swiper">
+  <div class="slide-content">
+    <div class="card-wrapper swiper-wrapper">
+   
+
+
+
+
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-video">
+            <video src="https://cdn.shopify.com/videos/c/o/v/ff7bf95c7d56438ab6825d36f4bdcf10.mp4" autoplay="" loop="" muted=""></video>
+          </div>
+        </div>
+      </div>
+
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-video">
+            <video src="https://cdn.shopify.com/videos/c/o/v/1e6807d10c334c979fbea2ad60aa836e.mp4" autoplay="" loop="" muted=""></video>
+          </div>
+        </div>
+      </div>
+
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-video">
+            <video src="https://cdn.shopify.com/videos/c/o/v/ec38ce43db3e43a4b115e6086c571553.mp4" autoplay="" loop="" muted=""></video>
+          </div>
+        </div>
+      </div>
+      
+   
+   
+    </div>
+  </div>
+
+  <div class="swiper-button-next swiper-navBtn"></div>
+  <div class="swiper-button-prev swiper-navBtn"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+
+<!-- Your Custom Script -->
+<script>
+  var swiper = new Swiper(".slide-content", {
+    slidesPerView: 2,
+    spaceBetween: 25,
+    loop: true,
+    centerSlide: 'true',
+    fade: 'true',
+    grabCursor: 'true',
+    autoplay: {
+      delay: 3000, // Change slide every 3 seconds
+      disableOnInteraction: false, // Continue autoplay even after user interaction
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      520: {
+        slidesPerView: 2,
+      },
+      950: {
+        slidesPerView: 2,
+      },
+    },
+  });
+</script>
