@@ -1,0 +1,477 @@
+{% doc %}
+  @prompt
+    Create a responsive statistics section with three cards.
+    Each card should display a number that animates (count-up effect)
+    when the section becomes visible on page load or scroll.
+    
+    Stats:
+    - 500+ Educators Trained
+    - 400% Drop in Behavioral Incidents
+    - $2.1M Saved in Teacher Replacement Costs
+    
+    Requirements:
+    - Use HTML, CSS, and vanilla JavaScript only
+    - Smooth count-up animation
+    - Trigger animation when section enters viewport
+    - Responsive design
+    - Clean, modern UI
+    - Numbers should stop exactly at their final values
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-stats-section-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-stats-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-stats-heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.heading_margin }}px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 600;
+  }
+
+  .ai-stats-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .ai-stats-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    text-align: center;
+    box-shadow: {{ block.settings.card_shadow_x }}px {{ block.settings.card_shadow_y }}px {{ block.settings.card_shadow_blur }}px {{ block.settings.card_shadow_color }};
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-stats-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+    box-shadow: {{ block.settings.card_shadow_x }}px {{ block.settings.card_shadow_y | plus: 5 }}px {{ block.settings.card_shadow_blur | plus: 10 }}px {{ block.settings.card_shadow_color }};
+  }
+
+  .ai-stats-number-{{ ai_gen_id }} {
+    font-size: {{ block.settings.number_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.number_color }};
+    margin-bottom: {{ block.settings.number_margin }}px;
+    line-height: 1.2;
+  }
+
+  .ai-stats-label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.label_size }}px;
+    color: {{ block.settings.label_color }};
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-stats-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.card_gap_mobile }}px;
+    }
+
+    .ai-stats-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+      margin-bottom: {{ block.settings.heading_margin | times: 0.7 }}px;
+    }
+
+    .ai-stats-number-{{ ai_gen_id }} {
+      font-size: {{ block.settings.number_size | times: 0.7 }}px;
+    }
+
+    .ai-stats-label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.label_size | times: 0.9 }}px;
+    }
+
+    .ai-stats-card-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<ai-stats-counter-{{ ai_gen_id }}
+  class="ai-stats-section-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-stats-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-stats-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-stats-grid-{{ ai_gen_id }}">
+      <div class="ai-stats-card-{{ ai_gen_id }}">
+        <div
+          class="ai-stats-number-{{ ai_gen_id }}"
+          data-target="500"
+          data-suffix="+"
+        >
+          0+
+        </div>
+        <div class="ai-stats-label-{{ ai_gen_id }}">{{ block.settings.stat_1_label }}</div>
+      </div>
+
+      <div class="ai-stats-card-{{ ai_gen_id }}">
+        <div
+          class="ai-stats-number-{{ ai_gen_id }}"
+          data-target="400"
+          data-suffix="%"
+        >
+          0%
+        </div>
+        <div class="ai-stats-label-{{ ai_gen_id }}">{{ block.settings.stat_2_label }}</div>
+      </div>
+
+      <div class="ai-stats-card-{{ ai_gen_id }}">
+        <div
+          class="ai-stats-number-{{ ai_gen_id }}"
+          data-target="2.1"
+          data-prefix="$"
+          data-suffix="M"
+          data-decimals="1"
+        >
+          $0M
+        </div>
+        <div class="ai-stats-label-{{ ai_gen_id }}">{{ block.settings.stat_3_label }}</div>
+      </div>
+    </div>
+  </div>
+</ai-stats-counter-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AiStatsCounter{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.animated = false;
+        this.duration = {{ block.settings.animation_duration }};
+      }
+
+      connectedCallback() {
+        this.setupObserver();
+      }
+
+      setupObserver() {
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !this.animated) {
+              this.animated = true;
+              this.animateCounters();
+            }
+          });
+        }, options);
+
+        observer.observe(this);
+      }
+
+      animateCounters() {
+        const counters = this.querySelectorAll('.ai-stats-number-{{ ai_gen_id }}');
+
+        counters.forEach((counter) => {
+          const target = parseFloat(counter.getAttribute('data-target'));
+          const prefix = counter.getAttribute('data-prefix') || '';
+          const suffix = counter.getAttribute('data-suffix') || '';
+          const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
+          const duration = this.duration;
+          const increment = target / (duration / 16);
+          let current = 0;
+
+          const updateCounter = () => {
+            current += increment;
+
+            if (current < target) {
+              counter.textContent = prefix + this.formatNumber(current, decimals) + suffix;
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = prefix + this.formatNumber(target, decimals) + suffix;
+            }
+          };
+
+          updateCounter();
+        });
+      }
+
+      formatNumber(num, decimals) {
+        if (decimals > 0) {
+          return num.toFixed(decimals);
+        }
+        return Math.floor(num).toString();
+      }
+    }
+
+    customElements.define('ai-stats-counter-{{ ai_gen_id }}', AiStatsCounter{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Statistics counter",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Our Impact</p>"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fcfbf4"
+    },
+    {
+      "type": "header",
+      "content": "Heading style"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Font size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_margin",
+      "label": "Bottom margin",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "Educators Trained"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "Drop in Behavioral Incidents"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "Saved in Teacher Replacement Costs"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "card_gap_mobile",
+      "label": "Gap on mobile",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Card shadow"
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_x",
+      "label": "Horizontal offset",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_y",
+      "label": "Vertical offset",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_blur",
+      "label": "Blur",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "card_shadow_color",
+      "label": "Shadow color",
+      "default": "#00000015"
+    },
+    {
+      "type": "header",
+      "content": "Number style"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "label": "Font size",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "number_margin",
+      "label": "Bottom margin",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Color",
+      "default": "#1e96fc"
+    },
+    {
+      "type": "header",
+      "content": "Label style"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "label": "Duration",
+      "min": 500,
+      "max": 3000,
+      "step": 100,
+      "unit": "ms",
+      "default": 2000
+    }
+  ],
+  "presets": [
+    {
+      "name": "Statistics counter"
+    }
+  ]
+}
+{% endschema %}
+
