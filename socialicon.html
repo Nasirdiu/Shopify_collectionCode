@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Section</title>
+<style>
+
+  .social-icons {
+    display: flex;
+    gap: 15px;
+  }
+
+  .social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #fff; /* circle color */
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+    overflow: hidden;
+  }
+
+  .social-icons a img {
+    width: 60%; /* size of your icon inside the circle */
+    height: 60%;
+    object-fit: contain;
+  }
+
+  .social-icons a:hover {
+    background-color: #ddd;
+    transform: scale(1.1);
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 480px) {
+    .social-icons {
+      gap: 10px;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+    }
+
+    .social-icons a img {
+      width: 60%;
+      height: 60%;
+    }
+  }
+  .nasir {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+<div>
+    <h1 class="nasir">Share this:</h1>
+</div>
+<div class="social-icons">
+    
+  <a href="https://www.pinterest.com/brassluxcrafts" target="_blank">
+    <img src="https://cdn.shopify.com/s/files/1/0684/0952/4379/files/pinterest.png?v=1770619846" alt="Pinterest">
+  </a>
+  <a href="https://www.instagram.com/brassluxcrafts/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+  </a>
+  <a href="https://x.com/BrassluxCrafts" target="_blank">
+    <img src="https://cdn.shopify.com/s/files/1/0684/0952/4379/files/twitter.png?v=1770620083" alt="X">
+  </a>
+  <a href="https://www.youtube.com/@brassluxcrafts" target="_blank">
+    <img src="https://cdn.shopify.com/s/files/1/0684/0952/4379/files/youtube.png?v=1770620013" alt="YouTube">
+  </a>
+</div>
+
+</body>
+</html>
