@@ -1,0 +1,130 @@
+/* Product card image slider – track + dots. Uses theme .m-product-card__main-image so images show. */
+
+.m-product-card__media-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Disable theme hover zoom on card when slider is active – no image-up animation */
+  .m-product-card__media:hover .m-product-card__media-slider .m-product-card__main-image {
+    transform: none;
+  }
+  
+  .m-product-card__media-slider .m-product-card__main-image {
+    transition: none;
+  }
+  
+  /* Track: smooth scroll, flex row. */
+  .m-product-card__media-slider-track {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    touch-action: pan-x;
+    cursor: grab;
+    scroll-snap-stop: normal;
+  }
+  
+  .m-product-card__media-slider-track:active {
+    cursor: grabbing;
+  }
+  
+  .m-product-card__media-slider-track::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Slide: full width, smooth snap */
+  .m-product-card__media-slider-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    box-sizing: border-box;
+  }
+  
+  .m-product-card__media-slider-slide .m-product-card__main-image {
+    width: 100%;
+    display: block;
+  }
+  
+  /* So theme responsive-image gets size and images load (ResponsiveImage uses this.clientWidth/Height) */
+  .m-product-card__media-slider-slide .m-product-card__main-image responsive-image,
+  .m-product-card__media-slider-slide .m-product-card__main-image .m-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--aspect-ratio, 1);
+  }
+  
+  .m-product-card__media-slider-slide .m-product-card__main-image .m-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Dots: bottom center – desktop gap 16px, easy to click */
+  .m-product-card__media-slider-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .m-product-card__media-slider-dots .m-product-card__media-slider-dot {
+    pointer-events: auto;
+  }
+  
+  .m-product-card__media-slider-dot {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 50%;
+    border: none;
+    padding: 6px;
+    margin: -6px;
+    background: #4d4d4d;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+    box-sizing: content-box;
+  }
+  
+  .m-product-card__media-slider-dot.m\:active,
+  .m-product-card__media-slider-dot:hover {
+    background: #212121;
+  }
+  
+  .m-product-card__media-slider-dot:focus {
+    outline: 2px solid #212121;
+    outline-offset: 2px;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .m-product-card__media-slider-dots {
+      bottom: 10px;
+      gap: 12px;
+    }
+    .m-product-card__media-slider-dot {
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      min-height: 6px;
+      padding: 3px;
+      margin: -5px;
+    }
+  }
+  

@@ -1,0 +1,85 @@
+{% comment %}
+  Product card image slider: shows all product images in a scrollable slider with dots.
+  Used when settings.pcard_image_slider is true.
+  Accepts: product, image_ratio (optional)
+{% endcomment %}
+
+{% liquid
+  if image_ratio == null or image_ratio == blank
+    assign image_ratio = settings.pcard_image_ratio | default: '1/1'
+  endif
+  assign pcard_default_image = settings.pcard_default_image
+%}
+{%- capture sizes -%}(min-width: {{ settings.container_width }}px) {{ settings.container_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2){%- endcapture -%}
+
+<div class="m-product-card__media-slider" data-product-card-slider>
+  <div class="m-product-card__media-slider-track" role="region" aria-label="{{ 'products.product.media' | t | default: 'Product images' }}">
+    {% if product.images.size > 0 %}
+      {% for image in product.images %}
+        {%- liquid
+          assign asp_rat = image_ratio | default: image.aspect_ratio
+          if asp_rat == 'original'
+            assign asp_rat = image.aspect_ratio
+          endif
+          assign img_alt = image.alt | default: product.title | escape
+        -%}
+        <div class="m-product-card__media-slider-slide" data-slide-index="{{ forloop.index0 }}">
+          <div class="m-product-card__main-image">
+            <responsive-image class="m-image m:block" style="--aspect-ratio: {{ asp_rat }}">
+              {{
+                image
+                | image_url: width: 1100
+                | image_tag:
+                  loading: 'lazy',
+                  class: 'm:w-full m:h-full',
+                  alt: img_alt,
+                  sizes: sizes,
+                  widths: '165, 360, 535, 750, 940, 1100'
+              }}
+            </responsive-image>
+          </div>
+        </div>
+      {% endfor %}
+    {% elsif pcard_default_image != blank %}
+      {%- liquid
+        assign asp_rat = image_ratio | default: pcard_default_image.aspect_ratio
+        if asp_rat == 'original'
+          assign asp_rat = pcard_default_image.aspect_ratio
+        endif
+      -%}
+      <div class="m-product-card__media-slider-slide" data-slide-index="0">
+        <div class="m-product-card__main-image">
+          <responsive-image class="m-image m:block" style="--aspect-ratio: {{ asp_rat }}">
+            {{
+              pcard_default_image
+              | image_url: width: 1100
+              | image_tag:
+                loading: 'lazy',
+                class: 'm:w-full m:h-full',
+                alt: product.title,
+                sizes: sizes,
+                widths: '165, 360, 535, 750, 940, 1100'
+            }}
+          </responsive-image>
+        </div>
+      </div>
+    {% else %}
+      <div class="m-product-card__media-slider-slide" data-slide-index="0">
+        <div class="m-product-card__main-image" style="--aspect-ratio: {{ image_ratio }}">
+          {{ 'product-1' | placeholder_svg_tag: 'm-placeholder-svg' }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  {% assign slide_count = product.images.size | default: 1 %}
+  {% if slide_count > 0 %}
+    <div class="m-product-card__media-slider-dots" aria-hidden="true">
+      {% for image in product.images %}
+        <button type="button" class="m-product-card__media-slider-dot{% if forloop.first %} m:active{% endif %}" data-dot-index="{{ forloop.index0 }}" aria-label="{{ 'general.accessibility.go_to_slide' | t: index: forloop.index | default: 'Go to slide' | append: ' ' | append: forloop.index }}"></button>
+      {% endfor %}
+      {% if product.images.size == 0 %}
+        <button type="button" class="m-product-card__media-slider-dot m:active" data-dot-index="0" aria-label="Slide 1"></button>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
