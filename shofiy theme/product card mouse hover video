@@ -1,0 +1,16 @@
+      {%- if second_media_type == 'video' -%}
+  <div class="m-product-card__hover-video" style="display:none; position:absolute; inset:0; width:100%; height:100%;">
+    {{ second_media | media_tag:
+        image_size: '1100px',
+        autoplay: false,
+        loop: true,
+        controls: false,
+        muted: true,
+        playsinline: true,
+        class: 'm:w-full m:h-full'
+    }}
+  </div>
+{%- endif -%}
+
+
+Img URL : https://prnt.sc/lhkgTRkhXaFi
