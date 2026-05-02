@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Popup</title>
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.contact-link {
+  cursor: pointer;
+  color: #000;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.contact-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 80px;
+}
+
+.contact-modal-content {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  animation: popupFade 0.3s ease;
+  text-align: center;
+}
+
+.contact-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.contact-icon-box {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-icon-box a {
+  text-decoration: none;
+  color: #000;
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  border-radius: 50%;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.contact-icon:hover {
+  background: #000;
+  color: #fff;
+}
+
+.contact-text {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@keyframes popupFade {
+  from {transform: translateY(-30px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+@media(max-width: 600px){
+  .contact-modal {
+    padding-top: 40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<a href="#" id="contactPopupBtn" class="contact-link">
+  Contact us for more details
+</a>
+
+<div id="contactModal" class="contact-modal">
+  <div class="contact-modal-content">
+
+    <span class="contact-close">&times;</span>
+
+    <h2>Contact Us</h2>
+    <p>Choose how you'd like to reach us</p>
+
+    <div class="contact-icons">
+
+      <!-- CALL -->
+      <div class="contact-icon-box">
+        <a href="tel:+19256558842" class="close-on-click">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-text">Call</div>
+        </a>
+      </div>
+
+      <!-- MAIL -->
+      <div class="contact-icon-box">
+        <a href="mailto:contact@brasslux.com" class="close-on-click">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">Mail</div>
+        </a>
+      </div>
+
+      <!-- CHAT -->
+      <div class="contact-icon-box">
+        <a href="#" id="openThemeChat" class="close-on-click">
+          <div class="contact-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <div class="contact-text">Chat</div>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+// POPUP CONTROL
+const modal = document.getElementById("contactModal");
+const btn = document.getElementById("contactPopupBtn");
+const closeBtn = document.querySelector(".contact-close");
+
+btn.onclick = function(e) {
+  e.preventDefault();
+  modal.style.display = "flex";
+}
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// CLOSE POPUP WHEN ICON CLICKED
+document.querySelectorAll('.close-on-click').forEach(el => {
+  el.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+});
+
+// SHOPIFY CHAT OPEN (Shadow DOM)
+document.getElementById("openThemeChat").addEventListener('click', function(e){
+  e.preventDefault();
+
+  const shopifyChat = document.querySelector("#ShopifyChat");
+
+  if(shopifyChat && shopifyChat.shadowRoot){
+    const chatButton = shopifyChat.shadowRoot.querySelector('button[data-spec="toggle-button"]');
+    if(chatButton){
+      chatButton.click();
+    }
+  }
+
+  // Close popup immediately after chat opens
+  modal.style.display = "none";
+});
+</script>
+
+</body>
+</html>
