@@ -1,0 +1,70 @@
+{% assign docs = product.metafields.custom.upload_file.value %}
+
+{% if docs != blank %}
+
+<div class="product-documents-wrapper">
+
+  <div class="doc-list">
+    {% for file in docs %}
+
+      {% assign file_name = file.url | split: '/' | last | split: '?' | first %}
+      {% assign clean_url = file.url | split: '?' | first %}
+
+      <div class="doc-item">
+
+        <span class="pdf-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#e10600">
+            <path d="M6 2C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H18C19.11 22 20 21.11 20 20V8L14 2H6ZM13 3.5L18.5 9H13V3.5Z"/>
+          </svg>
+        </span>
+
+        <a href="{{ clean_url }}" 
+           class="doc-name"
+           target="_blank"
+           download>
+           {{ file_name }}
+        </a>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+</div>
+
+<style>
+
+.product-documents-wrapper{
+  margin-top:25px;
+}
+
+.doc-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.doc-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.pdf-icon{
+  display:flex;
+  align-items:center;
+}
+
+.doc-name{
+  color:#0b3d91; /* deep blue */
+  font-weight:600;
+  text-decoration:underline;
+}
+
+.doc-name:hover{
+  color:#072a63;
+}
+
+</style>
+
+{% endif %}
