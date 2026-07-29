@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* মেইন কন্টেইনার */
+  .promo-container {
+    background-color: #020611; /* গাঢ় নেভি ব্লু ব্যাকগ্রাউন্ড */
+    color: #c5a059;          /* গোল্ডেন টেক্সট কালার */
+    padding: 30px;
+    border: 1px solid #1c2536; 
+    width: 422px;
+    height: 100%;
+text-align: center;
+    border-radius: 5px;
+  }
+
+  /* প্রতিটি রো এর ডিজাইন*/
+  .promo-item {
+    display: flex;
+    align-items: center; /* ইমেজ এবং লেখা মাঝ বরাবর থাকবে */
+    margin-bottom: 25px;
+  }
+
+  .promo-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ইমেজের বক্স */
+  .image-field {
+    width: 50px;      /* ইমেজের চওড়া */
+    height: 50px;     /* ইমেজের উচ্চতা */
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-field img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* ইমেজ যেন ফেটে না যায় */
+  }
+
+  /* লেখার স্টাইল */
+  .header {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    display: block;
+  }
+
+  .description {
+    font-size: 15px;
+    color: #c5a059;
+    opacity: 0.8;
+    display: block;
+  }
+</style>
+</head>
+<body>
+<div class="nasir-block">
+<div class="promo-container">
+
+  <!-- প্রথম আইটেম -->
+  
+  <div class="promo-item">
+    <div class="image-field">
+      <!-- এখানে ডায়মন্ড ইমেজের লিঙ্ক দিন -->
+      <img src="https://img.icons8.com/ios/100/c5a059/diamond--v1.png" alt="Premium">
+    </div>
+    <div>
+      <span class="header">Premium Quality</span>
+      <span class="description">Crafted with care.</span>
+    </div>
+  </div>
+
+  <!-- দ্বিতীয় আইটেম -->
+  <div class="promo-item">
+    <div class="image-field">
+      <!-- এখানে পাম ট্রি ইমেজের লিঙ্ক দিন -->
+      <img src="https://img.icons8.com/ios/100/c5a059/palm-tree.png" alt="Island">
+    </div>
+    <div>
+      <span class="header">Island Flavour</span>
+      <span class="description">Bold. Authentic. Real.</span>
+    </div>
+  </div>
+
+  <!-- তৃতীয় আইটেম -->
+  <div class="promo-item">
+    <div class="image-field">
+      <!-- এখানে সিটি ইমেজের লিঙ্ক দিন -->
+      <img src="https://img.icons8.com/ios/100/c5a059/city.png" alt="City">
+    </div>
+    <div>
+      <span class="header">City Energy</span>
+      <span class="description">Made for the night.</span>
+    </div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
