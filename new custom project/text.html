@@ -1,0 +1,94 @@
+<head>
+    
+    <style>
+
+
+        .container_pro_features {
+            background-color: #eef9ff;
+            border: 1px solid #d8eefc;
+            border-radius: 12px;
+            padding: 40px 20px;
+            display: flex;
+            max-width: 1400px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .container_pro_features .feature-box {
+            flex: 1;
+            padding: 0 30px;
+            text-align: center;
+        }
+
+        .container_pro_features.feature-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .container_pro_features.feature-title .icon-de {
+            font-size: 14px;
+            font-weight: 800;
+            color: #444;
+        }
+
+        .container_pro_features.feature-title .icon-shield {
+            color: #4da6ff;
+            font-size: 20px;
+        }
+
+        .container_pro_features.feature-title .feature-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .container_pro_features {
+                flex-direction: column;
+                padding: 30px 15px;
+            }
+            .container_pro_features .feature-box {
+                padding: 20px 0;
+            }
+            .container_pro_features .feature-box:first-child {
+                border-bottom: 1px solid #d8eefc;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container_pro_features">
+        <!-- Left Section -->
+        <div class="feature-box">
+            <div class="feature-title">
+ 
+                DE German Premium Craftsmanship
+            </div>
+            <p class="feature-desc">
+                Meticulously handcrafted in Germany, each piece is created with superior eco-friendly resin, embodying exceptional quality and sustainability.
+            </p>
+        </div>
+
+        <!-- Right Section -->
+        <div class="feature-box">
+            <div class="feature-title">
+                <span class="icon-shield">🛡️</span>
+                Lifetime Warranty
+            </div>
+            <p class="feature-desc">
+                Every sculpture is backed by our Lifetime Warranty, ensuring lasting quality and craftsmanship. If your piece does not meet expectations, we will make it right.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
